@@ -12,12 +12,12 @@ interface TeamMember {
 function App() {
   const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' })
   const [expandedMember, setExpandedMember] = useState<string | null>(null)
-  const [submittedName, setSubmittedName] = useState('')
 
   const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmittedName(formData.nome.trim())
-    setFormData({ nome: '', email: '', mensagem: '' })
+    const subject = `Contato pelo site Spell Solutions - ${formData.nome.trim()}`
+    const body = `Nome: ${formData.nome.trim()}\nE-mail: ${formData.email.trim()}\n\nMensagem:\n${formData.mensagem.trim()}`
+    window.location.href = `mailto:spellsolutions.co@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const team: TeamMember[] = [
@@ -26,28 +26,35 @@ function App() {
       name: 'Gabriel',
       role: 'Gerente de Projetos / Scrum Master',
       subRoles: ['Desenvolvedor Back-end'],
-      tasks: ['Versionamento', 'Back-end', 'Meios de Comunicação', 'Definição de Papéis', 'Missão, Visão e Valores', 'Carta do Projeto']
+      tasks: ['Versionamento', 'Back-end', 'Meios de Comunicação']
+    },
+    {
+      id: 'marcello',
+      name: 'Marcello',
+      role: 'Gerente de Projetos / Scrum Master',
+      subRoles: ['Desenvolvedor Front-end'],
+      tasks: ['Designer gráfico', 'Front-end', 'Gerente de marketing']
     },
     {
       id: 'andressa',
       name: 'Andressa',
       role: 'Líder Técnica / Especialista de Execução',
       subRoles: ['Desenvolvedora Front-end'],
-      tasks: ['Identidade Visual (Fontes, Cores, Logo)', 'Design do Site', 'Front-end']
+      tasks: ['Designer gráfica', 'Front-end']
     },
     {
       id: 'jordana',
       name: 'Jordana',
       role: 'Analista de Qualidade (QA) e Normas',
       subRoles: ['Desenvolvedora Back-end'],
-      tasks: ['Versionamento', 'Back-end', 'Meios de Comunicação', 'Definição de Papéis', 'Missão, Visão e Valores']
+      tasks: ['Versionamento', 'Back-end', 'Meios de Comunicação']
     },
     {
       id: 'lais',
       name: 'Laís',
       role: 'Analista de Documentação e Compliance',
       subRoles: ['Desenvolvedora Front-end'],
-      tasks: ['Identidade Visual (Fontes, Cores, Logo)', 'Design do Site', 'Front-end', 'Carta do Projeto']
+      tasks: ['Designer gráfica', 'Front-end']
     }
   ]
 
@@ -56,7 +63,9 @@ function App() {
       {/* HEADER / NAVIGATION */}
       <header className="navbar">
         <div className="logo-area">
-          <span className="logo-symbol animate-pulse">✦</span>
+          <span className="logo-mark-frame">
+            <img src="/spell-solutions-logo.png" alt="Símbolo da Spell Solutions" />
+          </span>
           <div className="logo-text">
             <span className="brand-name">SPELL</span>
             <span className="brand-sub">SOLUTIONS</span>
@@ -68,6 +77,7 @@ function App() {
           <a href="#valores">M.V.V.</a>
           <a href="#solucoes">Soluções</a>
           <a href="#equipe">Equipe</a>
+          <a href="#portfolio">Portfólio</a>
           <a href="#contato" className="btn-nav">Fale conosco</a>
         </nav>
       </header>
@@ -159,21 +169,42 @@ function App() {
       </section>
 
       {/* SOLUÇÕES */}
-      <section id="solucoes" className="cta-banner-section">
+      <section id="solucoes" className="services-section">
         <div className="cta-banner">
-          <div className="cta-text-content">
-            <span className="cta-tag">NOSSAS SOLUÇÕES</span>
-            <h2>Soluções digitais para o seu próximo grande passo.</h2>
-            <p>
-              Oferecemos uma experiência digital simples, acessível e profissional focada nos objetivos do seu negócio:
-            </p>
-            <ul className="solutions-list">
-              <li>✓ Facilitar compras e vendas online</li>
-              <li>✓ Organizar informações de forma clara</li>
-              <li>✓ Melhorar a comunicação com seus clientes</li>
-              <li>✓ Processos rápidos e eficientes</li>
-            </ul>
-            <a href="#contato" className="btn-banner">Solicitar orçamento ➔</a>
+          <div className="section-header center services-header">
+            <span className="subtitle">CONTEÚDO TÉCNICO · CATÁLOGO DE SERVIÇOS</span>
+            <h2>Serviços oferecidos</h2>
+          </div>
+          <div className="grid-cards">
+            <article className="info-card">
+              <div className="card-icon" aria-hidden="true">01</div>
+              <h3>Desenvolvimento e análise de websites</h3>
+              <p>
+                Desenvolvemos, corrigimos e analisamos websites para empresas de diversos segmentos.
+                Criamos sites modernos, funcionais e alinhados à identidade de cada empresa, além de
+                corrigir falhas e analisar o desempenho de páginas já existentes. Nosso objetivo é
+                garantir uma presença online eficiente, rápida e que gere resultados reais para o negócio.
+              </p>
+            </article>
+            <article className="info-card">
+              <div className="card-icon" aria-hidden="true">02</div>
+              <h3>Marketing digital e design para redes sociais</h3>
+              <p>
+                Atuamos com marketing digital e design para redes sociais. Desenvolvemos estratégias
+                de marketing e criamos artes e conteúdos visuais que fortalecem a imagem da marca.
+                Com planejamento e identidade visual consistente, ajudamos a ampliar o alcance, atrair
+                o público certo e aumentar o engajamento nas redes.
+              </p>
+            </article>
+            <article className="info-card">
+              <div className="card-icon" aria-hidden="true">03</div>
+              <h3>Gerenciamento de projetos</h3>
+              <p>
+                Realizamos o gerenciamento de projetos para empresas em crescimento ou já consolidadas
+                no mercado. Acompanhamos projetos organizando prazos, equipes e entregas. Com uma
+                gestão estruturada, buscamos garantir eficiência, qualidade e o cumprimento dos objetivos estabelecidos.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -232,19 +263,49 @@ function App() {
         </div>
       </section>
 
+      <section id="portfolio" className="portfolio-section">
+        <div className="cta-banner portfolio-banner">
+          <div className="section-header center services-header">
+            <span className="subtitle">CONTEÚDO TÉCNICO · PORTFÓLIO</span>
+            <h2>Nossos projetos</h2>
+          </div>
+          <article className="portfolio-card">
+            <div className="card-icon" aria-hidden="true">✦</div>
+            <h3>Um espaço para nossas próximas entregas</h3>
+            <p>
+              Esta área está estruturada para receber os projetos desenvolvidos pela Spell Solutions.
+              Enquanto novos cases são preparados, acompanhe o trabalho da equipe em nosso repositório.
+            </p>
+            <a
+              className="repo-link"
+              href="https://github.com/spell-solutions/Landing-Page"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Acessar repositório no GitHub <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+      </section>
+
       {/* CONTATO */}
       <section id="contato" className="contact-section">
         <div className="contact-container">
           <span className="subtitle">FALE COM A NOSSA EQUIPE</span>
           <h2>Vamos transformar sua próxima ideia?</h2>
-          <p>Conte-nos o que você precisa e nossa equipe retornará em breve.</p>
-          {submittedName ? (
-            <div className="form-success" role="status">
-              <span aria-hidden="true">✓</span>
-              <p><strong>Mensagem enviada!</strong> Obrigado, {submittedName}. Em breve, nossa equipe responderá.</p>
-            </div>
-          ) : (
-            <form className="contact-form" onSubmit={handleContactSubmit}>
+          <p>Ao enviar, seu aplicativo de e-mail será aberto com os dados preenchidos para spellsolutions.co@gmail.com. Revise e confirme o envio por lá.</p>
+          <a className="repo-link" href="mailto:spellsolutions.co@gmail.com">
+            spellsolutions.co@gmail.com
+          </a>
+          <a
+            className="repo-link"
+            href="https://github.com/spell-solutions/Landing-Page"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visitar repositório da Spell Solutions <span aria-hidden="true">↗</span>
+          </a>
+          <form className="contact-form" onSubmit={handleContactSubmit}>
             <label>
               Nome
               <input
@@ -280,7 +341,6 @@ function App() {
             </label>
             <button type="submit" className="btn-primary">Enviar mensagem</button>
           </form>
-          )}
         </div>
       </section>
 
