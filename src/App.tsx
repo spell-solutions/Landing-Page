@@ -269,22 +269,15 @@ function App() {
             <span className="subtitle">CONTEÚDO TÉCNICO · PORTFÓLIO</span>
             <h2>Nossos projetos</h2>
           </div>
-          <article className="portfolio-card">
-            <div className="card-icon" aria-hidden="true">✦</div>
-            <h3>Um espaço para nossas próximas entregas</h3>
-            <p>
-              Esta área está estruturada para receber os projetos desenvolvidos pela Spell Solutions.
-              Enquanto novos cases são preparados, acompanhe o trabalho da equipe em nosso repositório.
-            </p>
-            <a
-              className="repo-link"
-              href="https://github.com/spell-solutions/Landing-Page"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Acessar repositório no GitHub <span aria-hidden="true">↗</span>
-            </a>
-          </article>
+          <div className="portfolio-grid">
+            {[1, 2, 3].map((projectNumber) => (
+              <article className="portfolio-card" key={projectNumber}>
+                <span className="portfolio-number">{String(projectNumber).padStart(2, '0')}</span>
+                <h3>Projeto em breve</h3>
+                <p>Este espaço está reservado para uma próxima entrega da Spell Solutions.</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
