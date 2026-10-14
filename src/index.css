@@ -1,0 +1,65 @@
+:root {
+  /* Cores Principais do Modelo Original */
+  --lavender-blush: #FFEBED;
+  --muted-teal: #A6C9B6;
+  --pacific-cyan: #3E828E;
+  --off-white: #FAF9F8;
+  --teal-escuro: #1F5E66;
+  --azul-noturno: #0E2F36;
+
+  /* Mapeamento de Layout Corporativo */
+  --text: #4A5558;
+  --text-h: var(--azul-noturno);
+  --bg: var(--off-white);
+  --border: rgba(31, 94, 102, 0.15);
+  --accent: var(--pacific-cyan);
+  --accent-bg: rgba(62, 130, 142, 0.1);
+  --accent-border: var(--pacific-cyan);
+  --social-bg: rgba(31, 94, 102, 0.05);
+  --shadow: rgba(14, 47, 54, 0.08) 0 10px 30px -5px, rgba(14, 47, 54, 0.04) 0 4px 12px -2px;
+
+  --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --heading: Georgia, "Times New Roman", serif;
+
+  font: 16px/160% var(--sans);
+  letter-spacing: 0.2px;
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, .font-title {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
