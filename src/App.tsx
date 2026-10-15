@@ -23,35 +23,35 @@ function App() {
   const team: TeamMember[] = [
     {
       id: 'gabriel',
-      name: 'Gabriel',
+      name: 'Gabriel Freitas',
       role: 'Gerente de Projetos / Scrum Master',
       subRoles: ['Desenvolvedor Back-end'],
       tasks: ['Versionamento', 'Back-end', 'Meios de Comunicação']
     },
     {
       id: 'marcello',
-      name: 'Marcello',
+      name: 'Marcello Henrique',
       role: 'Gerente de Projetos / Scrum Master',
       subRoles: ['Desenvolvedor Front-end'],
       tasks: ['Designer gráfico', 'Front-end', 'Gerente de marketing']
     },
     {
       id: 'andressa',
-      name: 'Andressa',
+      name: 'Andressa Souza',
       role: 'Líder Técnica / Especialista de Execução',
       subRoles: ['Desenvolvedora Front-end'],
       tasks: ['Designer gráfica', 'Front-end']
     },
     {
       id: 'jordana',
-      name: 'Jordana',
+      name: 'Jordana Fernandes',
       role: 'Analista de Qualidade (QA) e Normas',
       subRoles: ['Desenvolvedora Back-end'],
       tasks: ['Versionamento', 'Back-end', 'Meios de Comunicação']
     },
     {
       id: 'lais',
-      name: 'Laís',
+      name: 'Laís Rodrigues',
       role: 'Analista de Documentação e Compliance',
       subRoles: ['Desenvolvedora Front-end'],
       tasks: ['Designer gráfica', 'Front-end']
