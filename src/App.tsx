@@ -64,7 +64,7 @@ function App() {
       <header className="navbar">
         <div className="logo-area">
           <span className="logo-mark-frame">
-            <img src="/spell-solutions-logo.png" alt="Símbolo da Spell Solutions" />
+            <img src="/spell-solutions-logo.png" alt="Símbolo da Spell Solutions" width="76" height="50" decoding="async" />
           </span>
           <div className="logo-text">
             <span className="brand-name">SPELL</span>

@@ -77,7 +77,7 @@ const markup = `
   <div class="landing-page">
     <header class="navbar">
       <div class="logo-area">
-        <span class="logo-mark-frame"><img src="/spell-solutions-logo.png" alt="Símbolo da Spell Solutions"></span>
+        <span class="logo-mark-frame"><img src="/spell-solutions-logo.png" alt="Símbolo da Spell Solutions" width="76" height="50" decoding="async"></span>
         <div class="logo-text"><span class="brand-name">SPELL</span><span class="brand-sub">SOLUTIONS</span></div>
       </div>
       <nav class="nav-links" aria-label="Navegação principal">
