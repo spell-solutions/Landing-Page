@@ -164,8 +164,17 @@ const markup = `
           <div class="portfolio-grid">
             <article class="portfolio-card">
               <span class="portfolio-number">01</span>
-              <h3>Projeto em breve</h3>
-              <p>Este espaço está reservado para uma próxima entrega da Spell Solutions.</p>
+              <img
+                class="portfolio-image"
+                src="/GrãoEspecial.png"
+                alt="Painel do sistema GrãoEspecial com indicadores de estoque, metas e lotes de café"
+                width="1600"
+                height="783"
+                loading="lazy"
+                decoding="async"
+              >
+              <h3>GrãoEspecial</h3>
+              <p>Sistema de operações e torrefação com indicadores de estoque, metas por variedade e acompanhamento de lotes.</p>
             </article>
             <article class="portfolio-card">
               <span class="portfolio-number">02</span>

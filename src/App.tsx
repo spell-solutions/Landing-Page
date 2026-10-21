@@ -270,7 +270,21 @@ function App() {
             <h2>Nossos projetos</h2>
           </div>
           <div className="portfolio-grid">
-            {[1, 2, 3].map((projectNumber) => (
+            <article className="portfolio-card">
+              <span className="portfolio-number">01</span>
+              <img
+                className="portfolio-image"
+                src="/GrãoEspecial.png"
+                alt="Painel do sistema GrãoEspecial com indicadores de estoque, metas e lotes de café"
+                width="1600"
+                height="783"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3>GrãoEspecial</h3>
+              <p>Sistema de operações e torrefação com indicadores de estoque, metas por variedade e acompanhamento de lotes.</p>
+            </article>
+            {[2, 3].map((projectNumber) => (
               <article className="portfolio-card" key={projectNumber}>
                 <span className="portfolio-number">{String(projectNumber).padStart(2, '0')}</span>
                 <h3>Projeto em breve</h3>

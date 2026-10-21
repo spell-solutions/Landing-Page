@@ -294,6 +294,14 @@ h1, h2, h3 {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.portfolio-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 16px;
+  border-radius: 10px;
+}
+
 .portfolio-card h3 {
   margin: 12px 0 8px;
   color: #ffffff;
