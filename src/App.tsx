@@ -284,13 +284,30 @@ function App() {
               <h3>GrãoEspecial</h3>
               <p>Sistema de operações e torrefação com indicadores de estoque, metas por variedade e acompanhamento de lotes.</p>
             </article>
-            {[2, 3].map((projectNumber) => (
-              <article className="portfolio-card" key={projectNumber}>
-                <span className="portfolio-number">{String(projectNumber).padStart(2, '0')}</span>
-                <h3>Projeto em breve</h3>
-                <p>Este espaço está reservado para uma próxima entrega da Spell Solutions.</p>
-              </article>
-            ))}
+            <article className="portfolio-card">
+              <span className="portfolio-number">02</span>
+              <img
+                className="portfolio-image"
+                src="/Studio%20Pilates.png"
+                alt="Painel do sistema de gestão Studio Pilates"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3>Studio Pilates</h3>
+              <p>Sistema de gestão para estúdio de pilates, com controle de tarefas, equipe, presença em aulas e planos.</p>
+            </article>
+            <article className="portfolio-card">
+              <span className="portfolio-number">03</span>
+              <img
+                className="portfolio-image"
+                src="/Zenvet.png"
+                alt="Painel do sistema veterinário Zenvet"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3>Zenvet</h3>
+              <p>Sistema de gestão veterinária com agendamentos, controle de estoque, vacinação e histórico de receitas.</p>
+            </article>
           </div>
         </div>
       </section>

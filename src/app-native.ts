@@ -8,6 +8,15 @@ interface TeamMember {
   tasks: string[]
 }
 
+interface PortfolioProject {
+  name: string
+  image: string
+  imageAlt: string
+  description: string
+  width?: number
+  height?: number
+}
+
 const team: TeamMember[] = [
   {
     id: 'gabriel',
@@ -46,6 +55,35 @@ const team: TeamMember[] = [
   },
 ]
 
+const projects: PortfolioProject[] = [
+  {
+    name: 'GrãoEspecial',
+    image: '/GrãoEspecial.png',
+    imageAlt: 'Painel do sistema GrãoEspecial com indicadores de estoque, metas e lotes de café',
+    description: 'Sistema de operações e torrefação com indicadores de estoque, metas por variedade e acompanhamento de lotes.',
+    width: 1600,
+    height: 783,
+  },
+  {
+    name: 'Studio Pilates',
+    image: '/Studio%20Pilates.png',
+    imageAlt: 'Projeto Studio Pilates',
+    description: 'Sistema de gestão para estúdio de pilates, com controle de tarefas, equipe, presença em aulas e planos.',
+  },
+  {
+    name: 'Zenvet',
+    image: '/Zenvet.png',
+    imageAlt: 'Projeto Zenvet',
+    description: 'Sistema de gestão veterinária com agendamentos, controle de estoque, vacinação e histórico de receitas.',
+  },
+  {
+    name: 'Pizzaria',
+    image: '/Pizzaria.png',
+    imageAlt: 'Pizza para o projeto Pizzaria',
+    description: 'Realizamos a análise técnica do sistema de uma pizzaria, diagnosticando e solucionando as inconsistências do código até alcançar o seu funcionamento ideal.',
+  },
+]
+
 const teamCards = team.map((member) => `
   <article class="team-card" data-member-id="${member.id}">
     <div class="team-card-summary">
@@ -70,6 +108,23 @@ const teamCards = team.map((member) => `
         <ul>${member.tasks.map((task) => `<li>${task}</li>`).join('')}</ul>
       </div>
     </div>
+  </article>
+`).join('')
+
+const portfolioCards = projects.map((project, index) => `
+  <article class="portfolio-card">
+    <span class="portfolio-number">${String(index + 1).padStart(2, '0')}</span>
+    <img
+      class="portfolio-image"
+      src="${project.image}"
+      alt="${project.imageAlt}"
+      ${project.width ? `width="${project.width}"` : ''}
+      ${project.height ? `height="${project.height}"` : ''}
+      loading="lazy"
+      decoding="async"
+    >
+    <h3>${project.name}</h3>
+    <p>${project.description}</p>
   </article>
 `).join('')
 
@@ -161,32 +216,19 @@ const markup = `
             <span class="subtitle">CONTEÚDO TÉCNICO · PORTFÓLIO</span>
             <h2>Nossos projetos</h2>
           </div>
-          <div class="portfolio-grid">
-            <article class="portfolio-card">
-              <span class="portfolio-number">01</span>
-              <img
-                class="portfolio-image"
-                src="/GrãoEspecial.png"
-                alt="Painel do sistema GrãoEspecial com indicadores de estoque, metas e lotes de café"
-                width="1600"
-                height="783"
-                loading="lazy"
-                decoding="async"
-              >
-              <h3>GrãoEspecial</h3>
-              <p>Sistema de operações e torrefação com indicadores de estoque, metas por variedade e acompanhamento de lotes.</p>
-            </article>
-            <article class="portfolio-card">
-              <span class="portfolio-number">02</span>
-              <h3>Projeto em breve</h3>
-              <p>Este espaço está reservado para uma próxima entrega da Spell Solutions.</p>
-            </article>
-            <article class="portfolio-card">
-              <span class="portfolio-number">03</span>
-              <h3>Projeto em breve</h3>
-              <p>Este espaço está reservado para uma próxima entrega da Spell Solutions.</p>
-            </article>
+          <div id="portfolio-grid" class="portfolio-grid is-collapsed">
+            ${portfolioCards}
           </div>
+          <button
+            type="button"
+            class="team-toggle portfolio-toggle"
+            aria-expanded="false"
+            aria-controls="portfolio-grid"
+            data-portfolio-toggle
+          >
+            <span>Ver mais projetos</span>
+            <span class="team-toggle-icon" aria-hidden="true">+</span>
+          </button>
         </div>
       </section>
 
@@ -221,7 +263,24 @@ export function initApp(root: HTMLElement): void {
   root.innerHTML = markup
 
   root.addEventListener('click', (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLElement>('[data-team-toggle]')
+    const target = event.target as HTMLElement
+    const portfolioButton = target.closest<HTMLElement>('[data-portfolio-toggle]')
+
+    if (portfolioButton) {
+      const grid = root.querySelector<HTMLElement>('#portfolio-grid')
+      const toggleIcon = portfolioButton.querySelector<HTMLElement>('.team-toggle-icon')
+      const isExpanded = portfolioButton.getAttribute('aria-expanded') === 'true'
+
+      if (!grid || !toggleIcon) return
+
+      portfolioButton.setAttribute('aria-expanded', String(!isExpanded))
+      grid.classList.toggle('is-collapsed', isExpanded)
+      portfolioButton.querySelector('span')!.textContent = isExpanded ? 'Ver mais projetos' : 'Ver menos projetos'
+      toggleIcon.textContent = isExpanded ? '+' : '−'
+      return
+    }
+
+    const button = target.closest<HTMLElement>('[data-team-toggle]')
     if (!button) return
 
     const card = button.closest<HTMLElement>('[data-member-id]')

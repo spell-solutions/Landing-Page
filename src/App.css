@@ -285,6 +285,23 @@ h1, h2, h3 {
   gap: 24px;
 }
 
+.portfolio-grid.is-collapsed {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.portfolio-grid.is-collapsed .portfolio-card:not(:first-child) {
+  display: none;
+}
+
+.portfolio-toggle {
+  width: fit-content;
+  min-width: 220px;
+  margin: 24px auto 0;
+  gap: 12px;
+}
+
 .portfolio-card {
   min-height: 190px;
   padding: 28px 24px;
